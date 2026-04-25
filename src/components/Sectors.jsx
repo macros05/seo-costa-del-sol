@@ -51,7 +51,7 @@ export default function Sectors() {
               data-cursor
             >
               <span className={styles.pillIcon} aria-hidden="true">{s.icon}</span>
-              {s.name}
+              <span className={styles.pillLabel}>{s.name}</span>
             </motion.span>
           ))}
         </div>

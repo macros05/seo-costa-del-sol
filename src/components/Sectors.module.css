@@ -76,7 +76,6 @@
 }
 
 .pill:hover {
-  color: #000;
   border-color: var(--lime);
 }
 
@@ -85,19 +84,24 @@
 }
 
 .pillIcon,
-.pill > :not(.pillIcon) {
+.pillLabel {
   position: relative;
   z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.pillLabel {
+  color: var(--ink);
 }
 
 .pillIcon {
   color: var(--lime);
   font-size: 18px;
-  transition: color 0.4s ease;
 }
 
-.pill:hover .pillIcon {
-  color: #000;
+.pill:hover .pillIcon,
+.pill:hover .pillLabel {
+  color: #080808;
 }
 
 .line {
