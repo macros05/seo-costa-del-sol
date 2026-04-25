@@ -59,22 +59,24 @@ export default function Navbar() {
               )}
             </nav>
 
-            <a href="/#contacto" className={styles.cta} data-cursor data-cursor-text="Empezar">
-              <span>Auditoría gratis</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M1 7h12m0 0L8 2m5 5l-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-              </svg>
-            </a>
+            <div className={styles.actions}>
+              <a href="/#contacto" className={styles.cta} data-cursor data-cursor-text="Empezar">
+                <span>Auditoría gratis</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 7h12m0 0L8 2m5 5l-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                </svg>
+              </a>
 
-            <button
-              className={styles.burger}
-              onClick={() => setOpen(!open)}
-              aria-label="Abrir menú"
-              aria-expanded={open}
-            >
-              <span className={open ? styles.burgerOpen : ''} />
-              <span className={open ? styles.burgerOpen : ''} />
-            </button>
+              <button
+                className={styles.burger}
+                onClick={() => setOpen(!open)}
+                aria-label="Abrir menú"
+                aria-expanded={open}
+              >
+                <span className={open ? styles.burgerOpen : ''} />
+                <span className={open ? styles.burgerOpen : ''} />
+              </button>
+            </div>
           </div>
 
           <AnimatePresence>

@@ -153,7 +153,7 @@ export default function Hero() {
             </defs>
             <text className={styles.badgeText}>
               <textPath href="#circle-text">
-                AUDITORÍA GRATUITA · ENTREGA EN 48H · SIN COMPROMISO ·
+                SIN COMPROMISO · AUDITORÍA GRATUITA ·
               </textPath>
             </text>
           </motion.svg>
