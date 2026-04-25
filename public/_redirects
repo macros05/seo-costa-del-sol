@@ -1,8 +1,8 @@
 # Cloudflare Pages redirects
-# /api/* proxies to the FastAPI backend on the Hetzner VPS (141.132.168.30).
-# Cloudflare requires HTTPS for proxied origins — make sure Nginx on the VPS
-# has a valid TLS cert (Let's Encrypt). IPv6 fallback: 2a01:4f8:1c1e:c36f::1
-/api/*  https://141.132.168.30/api/:splat  200
+# /api/* proxies to the FastAPI backend on the Hetzner VPS via api.seocostadelsol.com
+# (DNS-only A record → 142.132.168.30, Nginx + Let's Encrypt, auto-renew via certbot).
+# Using a hostname instead of a raw IP means the cert remains valid if the IP changes.
+/api/*  https://api.seocostadelsol.com/api/:splat  200
 
 # SPA fallback — every other request renders the React app.
-/*      /index.html                         200
+/*      /index.html                                 200
