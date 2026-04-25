@@ -1,0 +1,48 @@
+.section {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.tick {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: inline-flex;
+  white-space: nowrap;
+  padding: 22px 0;
+  will-change: transform;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 32px;
+  font-family: var(--display);
+  font-size: 32px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.star {
+  color: var(--lime);
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .item {
+    font-size: 22px;
+    padding: 0 20px;
+    gap: 12px;
+  }
+  .star {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects
+# /api/* proxies to the FastAPI backend on the Hetzner VPS.
+# IMPORTANT: replace YOUR_HETZNER_IP with the public IP (or HTTPS hostname)
+# of the VPS running ProyectoSEOBOT. Example: https://178.156.X.Y/api/:splat
+/api/*  https://YOUR_HETZNER_IP/api/:splat  200
+
+# SPA fallback — every other request renders the React app.
+/*      /index.html                          200

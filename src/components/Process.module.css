@@ -1,0 +1,186 @@
+.section {
+  padding: 130px 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  margin-bottom: 100px;
+  align-items: end;
+}
+
+.title {
+  font-family: var(--display);
+  font-size: clamp(50px, 8vw, 130px);
+  line-height: 0.9;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.titleAccent {
+  color: var(--lime);
+  font-style: italic;
+}
+
+.note {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 380px;
+  padding-bottom: 6px;
+  justify-self: end;
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 40px;
+}
+
+.connector {
+  position: absolute;
+  top: 28px;
+  left: 6%;
+  right: 6%;
+  width: 88%;
+  height: 4px;
+}
+
+.connectorV {
+  display: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.dotWrap {
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
+.dotOuter {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.dotInner {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 18px rgba(190, 255, 0, 0.5);
+}
+
+.stepCard {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 28px 32px;
+  background: rgba(255, 255, 255, 0.012);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.4s ease, transform 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 260px;
+}
+
+.stepCard:hover {
+  border-color: rgba(190, 255, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.stepHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.stepNum {
+  font-family: var(--display);
+  font-size: 60px;
+  line-height: 0.85;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+
+.stepMeta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+  text-align: right;
+}
+
+.stepTitle {
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  margin-top: auto;
+}
+
+.stepBody {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 980px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .note {
+    justify-self: start;
+    max-width: none;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 0;
+    padding-left: 36px;
+  }
+
+  .connector {
+    display: none;
+  }
+
+  .connectorV {
+    display: block;
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: 4px;
+    height: auto;
+  }
+
+  .stepNum {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 540px) {
+  .section {
+    padding: 80px 0;
+  }
+}
