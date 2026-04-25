@@ -169,6 +169,14 @@
   color: var(--ink);
 }
 
+.mobileLinkInner {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  color: inherit;
+  font: inherit;
+}
+
 .mobileNum {
   font-family: var(--mono);
   font-size: 11px;
