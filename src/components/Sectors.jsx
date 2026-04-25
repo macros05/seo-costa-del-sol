@@ -60,9 +60,10 @@ export default function Sectors() {
 
         <div className={styles.bottom}>
           <p className={styles.bottomLeft}>
-            <span className={styles.bigQuote}>"</span>
+            <span className={styles.bigQuote}>“</span>
             Cada sector tiene sus propias búsquedas, su propia competencia y sus
             propias oportunidades. <span className={styles.bottomAccent}>No vale la misma fórmula para todos.</span>
+            <span className={styles.bigQuoteClose}>”</span>
           </p>
           <div className={styles.bottomRight}>
             <div className={styles.signature}>

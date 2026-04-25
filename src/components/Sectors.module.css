@@ -136,6 +136,15 @@
   line-height: 0.6;
 }
 
+.bigQuoteClose {
+  font-size: 1.4em;
+  color: var(--lime);
+  margin-left: 6px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 0.6;
+}
+
 .bottomAccent {
   color: var(--lime);
   font-style: italic;
