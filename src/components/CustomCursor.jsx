@@ -9,13 +9,18 @@ export default function CustomCursor() {
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
 
-  const springX = useSpring(x, { stiffness: 320, damping: 30, mass: 0.4 })
-  const springY = useSpring(y, { stiffness: 320, damping: 30, mass: 0.4 })
+  // Tighter springs + lower mass = the cursor tracks the pointer almost
+  // immediately; the ring keeps a soft trailing feel without the prior lag.
+  const springX = useSpring(x, { stiffness: 800, damping: 40, mass: 0.2 })
+  const springY = useSpring(y, { stiffness: 800, damping: 40, mass: 0.2 })
 
-  const ringX = useSpring(x, { stiffness: 140, damping: 22, mass: 0.6 })
-  const ringY = useSpring(y, { stiffness: 140, damping: 22, mass: 0.6 })
+  const ringX = useSpring(x, { stiffness: 220, damping: 24, mass: 0.5 })
+  const ringY = useSpring(y, { stiffness: 220, damping: 24, mass: 0.5 })
 
-  const ref = useRef({ x: 0, y: 0 })
+  // Mirror hover/text in refs so the mousemove handler can compare without
+  // forcing a React re-render on every pointer event.
+  const hoveringRef = useRef(false)
+  const textRef = useRef('')
 
   useEffect(() => {
     const isDesktop =
@@ -26,24 +31,31 @@ export default function CustomCursor() {
     document.body.classList.add('has-custom-cursor')
 
     const onMove = (e) => {
-      ref.current = { x: e.clientX, y: e.clientY }
       x.set(e.clientX)
       y.set(e.clientY)
 
       const target = e.target
+      let nextHovering = false
+      let nextText = ''
       if (target instanceof Element) {
         const trigger = target.closest('[data-cursor]')
         if (trigger) {
-          setHovering(true)
-          setText(trigger.getAttribute('data-cursor-text') || '')
-          return
+          nextHovering = true
+          nextText = trigger.getAttribute('data-cursor-text') || ''
         }
       }
-      setHovering(false)
-      setText('')
+
+      if (nextHovering !== hoveringRef.current) {
+        hoveringRef.current = nextHovering
+        setHovering(nextHovering)
+      }
+      if (nextText !== textRef.current) {
+        textRef.current = nextText
+        setText(nextText)
+      }
     }
 
-    window.addEventListener('mousemove', onMove)
+    window.addEventListener('mousemove', onMove, { passive: true })
     return () => {
       window.removeEventListener('mousemove', onMove)
       document.body.classList.remove('has-custom-cursor')
