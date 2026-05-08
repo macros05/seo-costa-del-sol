@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -15,9 +16,11 @@ export default function Footer() {
         <div className={styles.row}>
           <div className={styles.col}>
             <span className={styles.kicker}>Estudio</span>
-            <p className={styles.text}>
-              Marcos Morales <br />
-              Costa del Sol · Torremolinos, Málaga · ES
+            <p className={styles.text} itemScope itemType="https://schema.org/PostalAddress">
+              <span itemProp="streetAddress">Marcos Morales</span> <br />
+              <span itemProp="addressLocality">Torremolinos</span>,{' '}
+              <span itemProp="addressRegion">Málaga</span> ·{' '}
+              <span itemProp="addressCountry">ES</span>
             </p>
           </div>
 
@@ -26,15 +29,34 @@ export default function Footer() {
             <a href="mailto:seo@marcosmorales.dev" className={styles.linkBig}>
               seo@marcosmorales.dev
             </a>
+            <Link to="/contacto" className={styles.subLink}>
+              Página de contacto →
+            </Link>
           </div>
 
           <div className={styles.col}>
-            <span className={styles.kicker}>Sígueme</span>
-            <div className={styles.social}>
-              <a href="#" aria-label="LinkedIn" className={styles.socialLink}>LinkedIn</a>
-              <a href="#" aria-label="X / Twitter" className={styles.socialLink}>X</a>
-              <a href="#" aria-label="Email" className={styles.socialLink}>Email</a>
-            </div>
+            <span className={styles.kicker}>Áreas</span>
+            <ul className={styles.list}>
+              <li><Link to="/seo-malaga">SEO Málaga</Link></li>
+              <li><Link to="/seo-marbella">SEO Marbella</Link></li>
+              <li><Link to="/seo-fuengirola">SEO Fuengirola</Link></li>
+              <li><Link to="/seo-benalmadena">SEO Benalmádena</Link></li>
+              <li><Link to="/seo-torremolinos">SEO Torremolinos</Link></li>
+              <li><Link to="/seo-estepona">SEO Estepona</Link></li>
+              <li><Link to="/seo-nerja">SEO Nerja</Link></li>
+            </ul>
+          </div>
+
+          <div className={styles.col}>
+            <span className={styles.kicker}>Servicios</span>
+            <ul className={styles.list}>
+              <li><Link to="/servicios/auditoria-seo">Auditoría SEO</Link></li>
+              <li><Link to="/servicios/seo-local">SEO local</Link></li>
+              <li><Link to="/servicios/seo-ecommerce">SEO ecommerce</Link></li>
+              <li><Link to="/servicios/link-building">Link building</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/preguntas-frecuentes">Preguntas frecuentes</Link></li>
+            </ul>
           </div>
 
           <motion.div

@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#080808" />
 
+    <!-- BEGIN HEAD -->
     <title>SEO Costa del Sol | Auditoría SEO Gratis Málaga, Marbella, Fuengirola</title>
     <meta
       name="description"
       content="SEO Costa del Sol: auditoría gratuita y sin compromiso para negocios locales en Málaga, Marbella, Fuengirola, Benalmádena, Torremolinos y Nerja. Te digo exactamente por qué no apareces en Google y cómo posicionarte en 30 días."
     />
-    <meta name="keywords" content="SEO Costa del Sol, SEO Málaga, SEO Marbella, SEO Fuengirola, SEO Benalmádena, SEO Torremolinos, SEO Nerja, posicionamiento web Costa del Sol, auditoría SEO Costa del Sol, freelance SEO Málaga, SEO local Andalucía" />
-    <meta name="author" content="Marcos Morales" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="geo.region" content="ES-AN" />
-    <meta name="geo.placename" content="Costa del Sol, Málaga" />
-
     <link rel="canonical" href="https://seocostadelsol.com/" />
 
     <meta property="og:type" content="website" />
@@ -39,10 +34,18 @@
       content="Audito tu negocio gratis y te digo qué arreglar para aparecer en Google en 30 días — Costa del Sol."
     />
     <meta name="twitter:image" content="https://seocostadelsol.com/og-image.jpg" />
+    <!-- END HEAD -->
+
+    <meta name="author" content="Marcos Morales" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="ES-AN" />
+    <meta name="geo.placename" content="Costa del Sol, Málaga" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.seocostadelsol.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.seocostadelsol.com" />
 
     <script type="application/ld+json">
     {
@@ -76,10 +79,14 @@
           "@type": "LocalBusiness",
           "@id": "https://seocostadelsol.com/#business",
           "name": "SEO Costa del Sol · Marcos Morales",
+          "alternateName": "Marcos Morales SEO",
           "image": "https://seocostadelsol.com/og-image.jpg",
+          "logo": "https://seocostadelsol.com/favicon.svg",
           "url": "https://seocostadelsol.com/",
           "email": "seo@marcosmorales.dev",
           "priceRange": "€€",
+          "foundingDate": "2018-01-01",
+          "founder": { "@id": "https://seocostadelsol.com/#person" },
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Torremolinos",
@@ -108,6 +115,33 @@
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "09:00",
             "closes": "19:00"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/marcosmoralesgonzalez/"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://seocostadelsol.com/#organization",
+          "name": "SEO Costa del Sol · Marcos Morales",
+          "url": "https://seocostadelsol.com/",
+          "logo": "https://seocostadelsol.com/favicon.svg",
+          "founder": { "@id": "https://seocostadelsol.com/#person" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://seocostadelsol.com/#website",
+          "url": "https://seocostadelsol.com/",
+          "name": "SEO Costa del Sol",
+          "publisher": { "@id": "https://seocostadelsol.com/#business" },
+          "inLanguage": "es-ES",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://seocostadelsol.com/blog?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
           }
         },
         {
@@ -126,32 +160,29 @@
             "@type": "OfferCatalog",
             "name": "Servicios SEO Costa del Sol",
             "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Auditoría técnica completa"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Análisis de keywords y competencia local"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Plan de acción priorizado"
-                }
-              }
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Auditoría técnica completa" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Análisis de keywords y competencia local" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plan de acción priorizado" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO local Costa del Sol" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Link building local" } }
             ]
           }
         }
       ]
     }
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FVX3VF6ZKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FVX3VF6ZKK', {
+        send_page_view: true,
+        anonymize_ip: true
+      });
+      window.gtag = gtag;
     </script>
   </head>
   <body>

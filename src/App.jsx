@@ -5,6 +5,10 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import BlogIndex from './pages/BlogIndex'
 import BlogPost from './pages/BlogPost'
+import CityPage from './pages/CityPage'
+import ServicePage from './pages/ServicePage'
+import FAQPage from './pages/FAQPage'
+import Contact from './pages/Contact'
 
 export default function App() {
   return (
@@ -15,6 +19,10 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/preguntas-frecuentes" element={<FAQPage />} />
+        <Route path="/contacto" element={<Contact />} />
+        <Route path="/servicios/:slug" element={<ServicePage />} />
+        <Route path="/seo-:slug" element={<CityPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

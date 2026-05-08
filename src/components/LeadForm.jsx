@@ -148,6 +148,12 @@ export default function LeadForm() {
       })
       setSuccess(true)
       reset()
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          source: 'landing-costadelsol',
+          business_type: data.business
+        })
+      }
     } catch (e) {
       setServerError('No se ha podido enviar. Inténtalo de nuevo en un minuto.')
     }

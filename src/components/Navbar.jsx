@@ -4,11 +4,11 @@ import { Link, useLocation } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const links = [
-  { href: '/#problema', label: 'El problema' },
-  { href: '/#servicio', label: 'Servicio' },
-  { href: '/#proceso', label: 'Proceso' },
-  { href: '/#sectores', label: 'Sectores' },
-  { href: '/blog', label: 'Blog', route: true }
+  { href: '/servicios/auditoria-seo', label: 'Servicios', route: true },
+  { href: '/seo-malaga', label: 'Áreas', route: true },
+  { href: '/blog', label: 'Blog', route: true },
+  { href: '/preguntas-frecuentes', label: 'FAQ', route: true },
+  { href: '/contacto', label: 'Contacto', route: true }
 ]
 
 export default function Navbar() {

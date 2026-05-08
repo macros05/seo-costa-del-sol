@@ -38,10 +38,40 @@
 
 .row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 32px;
   padding-bottom: 70px;
   border-bottom: 1px solid var(--line);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.list a {
+  font-size: 13px;
+  color: var(--ink-soft);
+  transition: color 0.3s ease;
+}
+
+.list a:hover {
+  color: var(--lime);
+}
+
+.subLink {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  transition: color 0.3s ease;
+}
+
+.subLink:hover {
+  color: var(--lime);
 }
 
 .col {
@@ -145,6 +175,13 @@
 
 .toTop:hover {
   color: var(--lime);
+}
+
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 24px;
+  }
 }
 
 @media (max-width: 880px) {
