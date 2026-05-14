@@ -225,6 +225,20 @@
   position: relative;
 }
 
+.lineGeo {
+  padding-left: 0;
+  font-size: 0.42em;
+  letter-spacing: 0.04em;
+  margin-top: 0.4em;
+  opacity: 0.78;
+}
+
+.wordGeo {
+  font-weight: 500;
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  text-transform: uppercase;
+}
+
 /* Actions */
 .actions {
   grid-column: 1 / span 2;

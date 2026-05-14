@@ -9,6 +9,8 @@ import CityPage from './pages/CityPage'
 import ServicePage from './pages/ServicePage'
 import FAQPage from './pages/FAQPage'
 import Contact from './pages/Contact'
+import Pricing from './pages/Pricing'
+import About from './pages/About'
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/preguntas-frecuentes" element={<FAQPage />} />
         <Route path="/contacto" element={<Contact />} />
+        <Route path="/precios" element={<Pricing />} />
+        <Route path="/sobre" element={<About />} />
         <Route path="/servicios/:slug" element={<ServicePage />} />
         <Route path="/seo-:slug" element={<CityPage />} />
       </Routes>

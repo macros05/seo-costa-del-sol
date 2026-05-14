@@ -43,7 +43,10 @@ export default function Footer() {
               <li><Link to="/seo-benalmadena">SEO Benalmádena</Link></li>
               <li><Link to="/seo-torremolinos">SEO Torremolinos</Link></li>
               <li><Link to="/seo-estepona">SEO Estepona</Link></li>
+              <li><Link to="/seo-mijas">SEO Mijas</Link></li>
               <li><Link to="/seo-nerja">SEO Nerja</Link></li>
+              <li><Link to="/seo-rincon-de-la-victoria">SEO Rincón de la Victoria</Link></li>
+              <li><Link to="/seo-velez-malaga">SEO Vélez-Málaga</Link></li>
             </ul>
           </div>
 
@@ -54,6 +57,8 @@ export default function Footer() {
               <li><Link to="/servicios/seo-local">SEO local</Link></li>
               <li><Link to="/servicios/seo-ecommerce">SEO ecommerce</Link></li>
               <li><Link to="/servicios/link-building">Link building</Link></li>
+              <li><Link to="/precios">Precios y tarifas</Link></li>
+              <li><Link to="/sobre">Sobre Marcos</Link></li>
               <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/preguntas-frecuentes">Preguntas frecuentes</Link></li>
             </ul>

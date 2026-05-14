@@ -3,6 +3,7 @@ import styles from './Hero.module.css'
 
 const line1 = ['APARECER', 'EN', 'GOOGLE']
 const line2 = ['ES', 'TU', 'MEJOR', 'VENDEDOR']
+const line3 = ['EN', 'LA', 'COSTA', 'DEL', 'SOL']
 
 const wordVariant = {
   hidden: { y: '110%', opacity: 0, rotate: 4 },
@@ -96,6 +97,23 @@ export default function Hero() {
                     className={`${styles.word} ${i === 2 ? styles.wordAccent : ''}`}
                     variants={wordVariant}
                     custom={i + line1.length}
+                    initial="hidden"
+                    animate="show"
+                  >
+                    {w}
+                  </motion.span>
+                </span>
+              ))}
+            </span>
+          </span>
+          <span className={styles.lineOuter}>
+            <span className={`${styles.line} ${styles.lineGeo}`}>
+              {line3.map((w, i) => (
+                <span key={w + i} className={styles.wordWrap}>
+                  <motion.span
+                    className={`${styles.word} ${styles.wordGeo}`}
+                    variants={wordVariant}
+                    custom={i + line1.length + line2.length}
                     initial="hidden"
                     animate="show"
                   >

@@ -3,7 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Seo, { breadcrumbJsonLd, articleJsonLd } from '../components/Seo'
 import Breadcrumbs from '../components/Breadcrumbs'
-import { getPost, getRelatedPosts, formatDate } from '../lib/posts'
+import { getPost, getRelatedPosts, formatDate, autoLinkInternal } from '../lib/posts'
 import styles from './BlogPost.module.css'
 
 export default function BlogPost() {
@@ -18,6 +18,9 @@ export default function BlogPost() {
 
   const path = `/blog/${post.slug}`
   const related = getRelatedPosts(post, 3)
+  const linkedContent = autoLinkInternal(post.content, {
+    excludeHref: post.citySlug ? `/${post.citySlug}` : null
+  })
 
   const jsonLd = [
     breadcrumbJsonLd([
@@ -106,8 +109,8 @@ export default function BlogPost() {
 
           <div className="container">
             <div
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              className={`${styles.content} article-content`}
+              dangerouslySetInnerHTML={{ __html: linkedContent }}
             />
 
             <aside className={styles.cta}>

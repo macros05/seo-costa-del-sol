@@ -6,8 +6,9 @@ import styles from './Navbar.module.css'
 const links = [
   { href: '/servicios/auditoria-seo', label: 'Servicios', route: true },
   { href: '/seo-malaga', label: 'Áreas', route: true },
+  { href: '/precios', label: 'Precios', route: true },
   { href: '/blog', label: 'Blog', route: true },
-  { href: '/preguntas-frecuentes', label: 'FAQ', route: true },
+  { href: '/sobre', label: 'Sobre', route: true },
   { href: '/contacto', label: 'Contacto', route: true }
 ]
 

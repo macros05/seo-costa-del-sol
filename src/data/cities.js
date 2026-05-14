@@ -96,6 +96,48 @@ export const cities = [
     keywords: ['SEO Nerja', 'posicionamiento web Nerja', 'consultor SEO Nerja', 'agencia SEO Nerja'],
     coords: { lat: 36.7521, lng: -3.8744 },
     near: ['seo-malaga', 'seo-torremolinos', 'seo-fuengirola']
+  },
+  {
+    slug: 'seo-mijas',
+    city: 'Mijas',
+    name: 'SEO en Mijas',
+    population: '85.000 habitantes',
+    intro:
+      'Mijas son tres mercados muy distintos bajo un mismo Ayuntamiento: Mijas Pueblo (turismo cultural, cliente extranjero acomodado), Mijas Costa / Calahonda (residencial y servicios para residentes UK/escandinavos) y La Cala de Mijas (turismo familiar y restauración). Un SEO genérico para "Mijas" pierde el 60% del tráfico potencial: aquí la estrategia ganadora es trabajar página específica por núcleo.',
+    competitionNote:
+      'Búsquedas bilingües ES/EN muy habituales por la alta densidad de residentes británicos, irlandeses y escandinavos. Recomendable contenido en inglés para inmobiliarias, restauración y servicios sanitarios.',
+    sectors: ['Inmobiliarias y property management', 'Restaurantes y chiringuitos', 'Clínicas dentales y estéticas', 'Servicios para extranjeros residentes', 'Hoteles y apartamentos turísticos'],
+    keywords: ['SEO Mijas', 'posicionamiento web Mijas', 'consultor SEO Mijas', 'SEO La Cala de Mijas', 'SEO Mijas Costa'],
+    coords: { lat: 36.5959, lng: -4.6373 },
+    near: ['seo-fuengirola', 'seo-benalmadena', 'seo-marbella']
+  },
+  {
+    slug: 'seo-rincon-de-la-victoria',
+    city: 'Rincón de la Victoria',
+    name: 'SEO en Rincón de la Victoria',
+    population: '49.000 habitantes',
+    intro:
+      'Rincón de la Victoria es la "Costa del Sol oriental": dormitorio de Málaga capital con alta densidad de comercio de proximidad, clínicas y servicios para familias residentes. La competencia digital es notablemente menor que en Málaga capital, lo que la convierte en una de las plazas con mejor retorno SEO por euro invertido en toda la provincia.',
+    competitionNote:
+      'Competencia digital baja-media. Búsquedas dominantes "[servicio] + Rincón de la Victoria" y "[servicio] + Torre de Benagalbón / Cala del Moral". Mercado de residentes, no de turismo masivo.',
+    sectors: ['Clínicas dentales y veterinarias', 'Restaurantes paseo marítimo', 'Comercio de proximidad', 'Talleres y servicios técnicos', 'Academias y centros formativos'],
+    keywords: ['SEO Rincón de la Victoria', 'posicionamiento web Rincón de la Victoria', 'consultor SEO Rincón de la Victoria', 'SEO Torre de Benagalbón', 'SEO Cala del Moral'],
+    coords: { lat: 36.7177, lng: -4.2820 },
+    near: ['seo-malaga', 'seo-velez-malaga', 'seo-torremolinos']
+  },
+  {
+    slug: 'seo-velez-malaga',
+    city: 'Vélez-Málaga',
+    name: 'SEO en Vélez-Málaga',
+    population: '83.000 habitantes',
+    intro:
+      'Vélez-Málaga y su núcleo costero Torre del Mar concentran la actividad económica de la Axarquía: capital comarcal con comercio fuerte, agricultura subtropical y un cinturón turístico cada vez más maduro. La búsqueda local "[servicio] + Vélez-Málaga" y "[servicio] + Torre del Mar" es prácticamente virgen en muchos sectores, lo que abre una ventana de oportunidad real para posicionar en el top 3 sin un gran presupuesto.',
+    competitionNote:
+      'Mercado en clara expansión, competencia SEO aún baja. Recomendable trabajar dos pilares: Vélez-Málaga (interior, comercio) y Torre del Mar (costa, restauración y turismo).',
+    sectors: ['Comercio y servicios profesionales', 'Restaurantes y chiringuitos Torre del Mar', 'Cooperativas agrícolas (mango, aguacate)', 'Clínicas y servicios sanitarios', 'Inmobiliarias y construcción'],
+    keywords: ['SEO Vélez-Málaga', 'posicionamiento web Vélez-Málaga', 'consultor SEO Vélez-Málaga', 'SEO Torre del Mar', 'agencia SEO Axarquía'],
+    coords: { lat: 36.7811, lng: -4.0998 },
+    near: ['seo-malaga', 'seo-nerja', 'seo-rincon-de-la-victoria']
   }
 ]
 

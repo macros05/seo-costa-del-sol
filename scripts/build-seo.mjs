@@ -84,11 +84,25 @@ function articleSchema(p) {
     dateModified: p.dateModified || p.publishedAt,
     author: { '@type': 'Person', name: 'Marcos Morales', '@id': `${SITE_URL}/#person` },
     publisher: { '@id': `${SITE_URL}/#business` },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blog/${p.slug}` }
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blog/${p.slug}` },
+    inLanguage: 'es-ES',
+    isPartOf: { '@id': `${SITE_URL}/blog` },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.article-content p:first-of-type', 'h2']
+    }
   }
   if (typeof p.wordCount === 'number' && p.wordCount > 0) block.wordCount = p.wordCount
   if (Array.isArray(p.keywords) && p.keywords.length) block.keywords = p.keywords.join(', ')
   if (p.sector) block.articleSection = p.sector
+  if (p.city) {
+    block.contentLocation = {
+      '@type': 'Place',
+      name: p.city,
+      address: { '@type': 'PostalAddress', addressRegion: 'Málaga', addressCountry: 'ES' }
+    }
+    block.about = { '@type': 'Place', name: p.city }
+  }
   return block
 }
 
@@ -136,6 +150,13 @@ const escapeAttr = (s) =>
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
+const escapeXml = (s) =>
+  String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
 
 const HEAD_REGEX = /<!-- BEGIN HEAD -->[\s\S]*?<!-- END HEAD -->/
 
@@ -225,7 +246,14 @@ async function main() {
       ],
       priority: 0.7,
       changefreq: 'monthly',
-      lastmod: (p.dateModified || p.publishedAt).slice(0, 10)
+      lastmod: (p.dateModified || p.publishedAt).slice(0, 10),
+      image: p.imageUrl
+        ? {
+            loc: `${SITE_URL}${p.imageUrl}`,
+            caption: p.imageAlt || p.title,
+            title: p.title
+          }
+        : null
     })
   }
 
@@ -241,6 +269,79 @@ async function main() {
         { name: 'Preguntas frecuentes', path: '/preguntas-frecuentes' }
       ]),
       faqSchema(generalFaqs)
+    ],
+    priority: 0.7,
+    changefreq: 'monthly'
+  })
+
+  // Pricing
+  const pricingFaqs = [
+    { q: '¿Por qué empiezas en 600 €/mes y no más barato?', a: 'SEO real es trabajo manual: análisis, contenido escrito por una persona, optimización de Google My Business, citaciones, reporting. Por debajo de 600 €/mes solo es viable la automatización barata o las plantillas reutilizadas que perjudican a tu web.' },
+    { q: '¿Tengo que firmar permanencia?', a: 'No. Todos los contratos son por meses sueltos. Lo recomendable son 6 meses mínimo para evaluar resultados, pero si no ves valor al mes 3, te vas sin penalización.' },
+    { q: '¿Garantizas posiciones?', a: 'No. Nadie controla el algoritmo de Google. Garantizo proceso, transparencia y métricas medibles: impresiones, posición media, leads.' },
+    { q: '¿Cómo se pagan los proyectos?', a: 'Mensualmente, primera semana del mes. Factura con IVA emitida desde España, totalmente deducible.' }
+  ]
+  routes.push({
+    path: '/precios',
+    title: 'Precios SEO Costa del Sol | Cuánto cuesta posicionar tu negocio · Marcos Morales',
+    description:
+      'Precios reales de SEO en la Costa del Sol: auditoría inicial gratis, SEO local desde 600 €/mes sin permanencia, SEO ecommerce desde 1.200 €/mes. Transparencia total.',
+    jsonLd: [
+      breadcrumb([{ name: 'Inicio', path: '/' }, { name: 'Precios', path: '/precios' }]),
+      faqSchema(pricingFaqs),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'OfferCatalog',
+        name: 'Precios SEO Costa del Sol',
+        url: `${SITE_URL}/precios`,
+        itemListElement: [
+          { '@type': 'Offer', name: 'Auditoría SEO inicial', price: '0', priceCurrency: 'EUR', description: 'Auditoría SEO gratuita, sin compromiso, entregada en 48h.' },
+          { '@type': 'Offer', name: 'SEO local mensual', price: '600', priceCurrency: 'EUR', description: 'SEO local continuado para negocios locales de la Costa del Sol. Sin permanencia.', priceSpecification: { '@type': 'UnitPriceSpecification', price: '600', priceCurrency: 'EUR', unitText: 'MONTH' } },
+          { '@type': 'Offer', name: 'SEO ecommerce / proyectos', price: '1200', priceCurrency: 'EUR', description: 'SEO técnico y de contenidos para tiendas online y proyectos con catálogo grande.', priceSpecification: { '@type': 'UnitPriceSpecification', price: '1200', priceCurrency: 'EUR', unitText: 'MONTH' } }
+        ]
+      }
+    ],
+    priority: 0.85,
+    changefreq: 'monthly'
+  })
+
+  // About
+  routes.push({
+    path: '/sobre',
+    title: 'Sobre Marcos Morales | Consultor SEO freelance en la Costa del Sol',
+    description:
+      'Marcos Morales · consultor SEO freelance con base en Torremolinos. 6+ años especializado en posicionamiento web local para negocios de Málaga y la Costa del Sol.',
+    jsonLd: [
+      breadcrumb([{ name: 'Inicio', path: '/' }, { name: 'Sobre Marcos', path: '/sobre' }]),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        url: `${SITE_URL}/sobre`,
+        name: 'Sobre Marcos Morales',
+        mainEntity: { '@id': `${SITE_URL}/#person` }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        url: `${SITE_URL}/sobre`,
+        mainEntity: {
+          '@type': 'Person',
+          '@id': `${SITE_URL}/#person`,
+          name: 'Marcos Morales',
+          jobTitle: 'Consultor SEO freelance',
+          knowsAbout: [
+            'SEO local',
+            'SEO técnico',
+            'Google My Business',
+            'Schema.org',
+            'Search Console',
+            'Link building local',
+            'SEO ecommerce',
+            'Core Web Vitals'
+          ],
+          sameAs: ['https://www.linkedin.com/in/marcosmoralesgonzalez/']
+        }
+      }
     ],
     priority: 0.7,
     changefreq: 'monthly'
@@ -343,21 +444,36 @@ async function main() {
     await writeRoute(template, r.path, r)
   }
 
-  // sitemap.xml
+  // sitemap.xml (with image:image for blog posts)
   const today = new Date().toISOString().slice(0, 10)
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...routes.map((r) =>
-      [
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+    '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+    ...routes.map((r) => {
+      const lines = [
         '  <url>',
         `    <loc>${SITE_URL}${r.path === '/' ? '/' : r.path}</loc>`,
         `    <lastmod>${r.lastmod || today}</lastmod>`,
         `    <changefreq>${r.changefreq || 'monthly'}</changefreq>`,
-        `    <priority>${(r.priority ?? 0.5).toFixed(1)}</priority>`,
-        '  </url>'
-      ].join('\n')
-    ),
+        `    <priority>${(r.priority ?? 0.5).toFixed(1)}</priority>`
+      ]
+      if (r.image) {
+        lines.push(
+          '    <image:image>',
+          `      <image:loc>${r.image.loc}</image:loc>`,
+          r.image.caption
+            ? `      <image:caption>${escapeXml(r.image.caption)}</image:caption>`
+            : '',
+          r.image.title
+            ? `      <image:title>${escapeXml(r.image.title)}</image:title>`
+            : '',
+          '    </image:image>'
+        )
+      }
+      lines.push('  </url>')
+      return lines.filter(Boolean).join('\n')
+    }),
     '</urlset>',
     ''
   ].join('\n')
@@ -374,9 +490,63 @@ async function main() {
   ].join('\n')
   await fs.writeFile(path.join(DIST, 'robots.txt'), robots, 'utf8')
 
+  // rss.xml (blog feed for IndexNow + aggregators + citations)
+  const sortedPosts = Object.values(postsBySlug).sort(
+    (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+  )
+  const buildDate = new Date().toUTCString()
+  const rssItems = sortedPosts
+    .map((p) => {
+      const pubDate = new Date(p.publishedAt).toUTCString()
+      const link = `${SITE_URL}/blog/${p.slug}`
+      const imageEnc = p.imageUrl
+        ? `      <enclosure url="${SITE_URL}${p.imageUrl}" type="image/jpeg" />\n`
+        : ''
+      return [
+        '    <item>',
+        `      <title>${escapeXml(p.title)}</title>`,
+        `      <link>${link}</link>`,
+        `      <guid isPermaLink="true">${link}</guid>`,
+        `      <pubDate>${pubDate}</pubDate>`,
+        `      <description>${escapeXml(p.metaDescription || '')}</description>`,
+        '      <dc:creator>Marcos Morales</dc:creator>',
+        p.sector ? `      <category>${escapeXml(p.sector)}</category>` : '',
+        p.city ? `      <category>${escapeXml(p.city)}</category>` : '',
+        imageEnc.trimEnd(),
+        '    </item>'
+      ]
+        .filter(Boolean)
+        .join('\n')
+    })
+    .join('\n')
+  const rss = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<rss version="2.0"',
+    '     xmlns:dc="http://purl.org/dc/elements/1.1/"',
+    '     xmlns:atom="http://www.w3.org/2005/Atom">',
+    '  <channel>',
+    '    <title>Blog SEO Costa del Sol · Marcos Morales</title>',
+    `    <link>${SITE_URL}/blog</link>`,
+    `    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />`,
+    '    <description>Artículos prácticos de SEO local para negocios de Málaga, Marbella, Fuengirola, Benalmádena, Torremolinos, Estepona y Nerja.</description>',
+    '    <language>es-ES</language>',
+    `    <lastBuildDate>${buildDate}</lastBuildDate>`,
+    `    <pubDate>${buildDate}</pubDate>`,
+    '    <ttl>60</ttl>',
+    '    <copyright>Marcos Morales · seocostadelsol.com</copyright>',
+    '    <managingEditor>seo@marcosmorales.dev (Marcos Morales)</managingEditor>',
+    '    <webMaster>seo@marcosmorales.dev (Marcos Morales)</webMaster>',
+    rssItems,
+    '  </channel>',
+    '</rss>',
+    ''
+  ].join('\n')
+  await fs.writeFile(path.join(DIST, 'rss.xml'), rss, 'utf8')
+
   console.log(`✓ Generated ${routes.length} static HTML routes`)
-  console.log(`✓ sitemap.xml: ${routes.length} URLs`)
+  console.log(`✓ sitemap.xml: ${routes.length} URLs (with image:image)`)
   console.log(`✓ robots.txt`)
+  console.log(`✓ rss.xml: ${sortedPosts.length} posts`)
 }
 
 main().catch((err) => {
